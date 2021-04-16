@@ -26,7 +26,7 @@ playButton.addEventListener('click', async () => {
 
   // no audio context
   else {
-    audioContext = await initAudioContext(['js/processor.js'])
+    audioContext = await initAudioContext(['js/audioWorklet.bundled.js'])
     const customNode = new AudioWorkletNode(audioContext, 'customProcessor')
     customNode.connect(audioContext.destination)
     playButton.classList.add('audio-playing')

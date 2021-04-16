@@ -1,29 +1,4 @@
-class GBnoiseLFSR {
-  constructor () {
-    this.init()
-  }
-
-  init () {
-    this.tap = 1
-    this.register = 1
-  }
-
-  set mode (value) {
-    value === 0 ? this.tap = 1 : this.tap = 6
-  }
-
-  next () {
-    const bitA = this.register & 1
-    const bitB = (this.register >> this.tap) & 1
-    const feedback = (bitA ^ bitB) << 14
-    this.register >>= 1
-    this.register |= feedback
-  }
-
-  read () {
-    return this.register >> 11
-  }
-}
+import GBnoiseLFSR from './GBnoiseLFSR'
 
 class GBnoiseGenerator extends AudioWorkletProcessor {
   constructor () {
@@ -43,7 +18,7 @@ class GBnoiseGenerator extends AudioWorkletProcessor {
         name: 'mode',
         minValue: 0,
         maxValue: 1,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       {
         name: 'gain',
@@ -74,6 +49,8 @@ class GBnoiseGenerator extends AudioWorkletProcessor {
       const gain = (params.gain.length === 1) ? params.gain[0] : params.gain[i]
       const freq = (params.freq.length === 1) ? params.freq[0] : params.freq[i]
       const mode = (params.mode.length === 1) ? params.mode[0] : params.mode[i]
+
+      this.lfsr.tap = (mode === 0) ? 1 : 6
 
       this.clock(currentFrame + i, freq)
       const hex = this.lfsr.read()

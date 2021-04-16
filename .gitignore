@@ -1,3 +1,6 @@
+# webpack bundled
+*.bundled.js*
+
 # git commit message
 .gitcommit
 
