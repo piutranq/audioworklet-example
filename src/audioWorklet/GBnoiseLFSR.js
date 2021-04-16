@@ -19,7 +19,6 @@ class GBnoiseLFSR {
   read () {
     return this.register >> 11
   }
-
 }
 
 export default GBnoiseLFSR

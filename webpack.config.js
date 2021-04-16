@@ -1,4 +1,6 @@
+const ESLintPlugin = require('eslint-webpack-plugin')
 const path = require('path')
+
 const config = {
   entry: {
     window: './src/window/index.js',
@@ -9,7 +11,8 @@ const config = {
     filename: '[name].bundled.js'
   },
   mode: 'development',
-  devtool: 'cheap-module-source-map'
+  devtool: 'cheap-module-source-map',
+  plugins: [new ESLintPlugin()]
 }
 
 module.exports = config

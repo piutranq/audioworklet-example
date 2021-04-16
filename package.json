@@ -9,6 +9,9 @@
   "author": "piutranq",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-webpack-plugin": "^2.5.3",
     "http-server": "^0.12.3",
     "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0"

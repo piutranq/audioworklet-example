@@ -1,3 +1,5 @@
+/* global sampleRate:readonly, currentFrame:readonly */
+
 import GBnoiseLFSR from './GBnoiseLFSR'
 
 class GBnoiseGenerator extends AudioWorkletProcessor {
@@ -18,7 +20,7 @@ class GBnoiseGenerator extends AudioWorkletProcessor {
         name: 'mode',
         minValue: 0,
         maxValue: 1,
-        defaultValue: 0,
+        defaultValue: 0
       },
       {
         name: 'gain',
